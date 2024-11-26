@@ -1,3 +1,3 @@
-package com.danielkim.laboratory.springbootweb.api.configurations.exceptions;
+package com.danielkim.laboratory.springbootweb.api.infrastructure.exceptions;
 
 public record ConversionToSecondaryValidationExceptionData(String errorMessage) {}

@@ -1,4 +1,4 @@
-package com.danielkim.laboratory.springbootweb.api.configurations.security;
+package com.danielkim.laboratory.springbootweb.api.infrastructure.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

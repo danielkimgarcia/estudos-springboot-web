@@ -19,3 +19,10 @@ server:
         whitelabel:
             enabled: false
         include-stacktrace: never
+
+api:
+    security:
+        token:
+            secret: ${JWT_SECRET:12345678}
+    timezone:
+        utc: +01:00

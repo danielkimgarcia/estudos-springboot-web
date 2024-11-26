@@ -1,4 +1,4 @@
-package com.danielkim.laboratory.springbootweb.api.configurations.exceptions;
+package com.danielkim.laboratory.springbootweb.api.infrastructure.exceptions;
 
 import org.springframework.validation.FieldError;
 

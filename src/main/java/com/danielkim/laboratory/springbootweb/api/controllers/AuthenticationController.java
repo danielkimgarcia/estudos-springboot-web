@@ -1,5 +1,8 @@
 package com.danielkim.laboratory.springbootweb.api.controllers;
 
+import com.danielkim.laboratory.springbootweb.api.infrastructure.security.TokenJWTData;
+import com.danielkim.laboratory.springbootweb.api.infrastructure.security.TokenService;
+import com.danielkim.laboratory.springbootweb.api.domain.user.User;
 import com.danielkim.laboratory.springbootweb.api.domain.user.UserAuthenticationData;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +21,17 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager manager;
 
-    @PostMapping
-    public ResponseEntity login(@RequestBody @Valid UserAuthenticationData authenticationData){
-        var token = new UsernamePasswordAuthenticationToken(authenticationData.username(), authenticationData.password());
-        var authentication = manager.authenticate(token);
+    @Autowired
+    private TokenService tokenService;
 
-        return ResponseEntity.ok().build();
+    @PostMapping
+    public ResponseEntity<TokenJWTData> login(@RequestBody @Valid UserAuthenticationData authenticationData){
+        var authenticationToken = new UsernamePasswordAuthenticationToken(authenticationData.username(), authenticationData.password());
+
+        var authentication = manager.authenticate(authenticationToken);
+
+        var tokenJWT = tokenService.generateToken((User) authentication.getPrincipal());
+
+        return ResponseEntity.ok(new TokenJWTData(tokenJWT));
     }
 }
