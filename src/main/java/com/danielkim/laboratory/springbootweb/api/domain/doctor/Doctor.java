@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "doctor")
+@Table(name = "doctors")
 @Entity(name = "Doctor")
 @Getter
 @NoArgsConstructor

@@ -1,1 +1,1 @@
-alter table doctor add secondName varchar(100) not null;
+alter table doctors add secondName varchar(100) not null;

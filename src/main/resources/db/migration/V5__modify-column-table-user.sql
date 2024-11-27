@@ -1,1 +1,1 @@
-ALTER TABLE user RENAME COLUMN userName TO username;
+ALTER TABLE users RENAME COLUMN userName TO username;

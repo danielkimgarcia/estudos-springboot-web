@@ -1,2 +1,2 @@
-alter table doctor add active tinyint;
-update doctor set active = 1;
+alter table doctors add active tinyint;
+update doctors set active = 1;

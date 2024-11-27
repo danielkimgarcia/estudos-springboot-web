@@ -1,6 +1,7 @@
 package com.danielkim.laboratory.springbootweb.api.infrastructure.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.flywaydb.core.internal.util.ExceptionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -33,9 +34,14 @@ public class CustomExceptionHandler {
         return ResponseEntity.unprocessableEntity().body(new ConversionToSecondaryValidationExceptionData(ex.getMessage()));
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ConversionToSecondaryValidationExceptionData> handle422DataIntegrityViolationException(RuntimeException ex) {
+        return ResponseEntity.unprocessableEntity().body(new ConversionToSecondaryValidationExceptionData(ExceptionUtils.getRootCause(ex).getMessage()));
+    }
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity tratarErro400(HttpMessageNotReadableException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
+        return ResponseEntity.badRequest().body(new ConversionToSecondaryValidationExceptionData(ex.getMessage()));
     }
 
     @ExceptionHandler(BadCredentialsException.class)
