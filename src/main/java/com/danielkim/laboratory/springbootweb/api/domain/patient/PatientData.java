@@ -17,8 +17,8 @@ public record PatientData(
         @NotBlank
         String phoneNumber,
         @NotBlank
-        @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")
+        @Pattern(regexp = "\\d{3}\\d{3}\\d{3}\\d{2}")
         String cpf,
 
-        @NotNull @Valid AddressData endereco) {
+        @NotNull @Valid AddressData address) {
 }

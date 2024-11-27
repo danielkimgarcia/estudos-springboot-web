@@ -36,7 +36,7 @@ public class Patient {
         this.email = data.email();
         this.phoneNumber = data.phoneNumber();
         this.cpf = data.cpf();
-        this.address = new Address(data.endereco());
+        this.address = new Address(data.address());
     }
 
     public void updateRegistryInformation(PatientUpdateData data) {

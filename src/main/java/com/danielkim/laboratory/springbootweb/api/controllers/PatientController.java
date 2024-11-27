@@ -41,9 +41,9 @@ public class PatientController {
         return ResponseEntity.ok(new PatientUpdatedData(patient));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Void> deletePatient(@PathParam("id") Long id) {
+    public ResponseEntity<Void> deletePatient(@PathVariable("id") Long id) {
         var patient = repository.getReferenceById(id);
 
         patient.delete();
